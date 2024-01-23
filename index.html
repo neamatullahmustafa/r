@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Droppable - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style>
+        .d-none {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #task1 {
+            width: 90%;
+            margin: auto;
+        }
+
+        #task1 div,
+        figcaption span {
+            display: inline-block;
+            width: 30%;
+            text-align: center;
+        }
+
+        #draggable {
+            width: 100px;
+            height: 100px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px 10px 10px 0;
+        }
+
+        #droppable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px;
+        }
+
+        #task1 {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        #task3 div{width: 50%;display: inline-block;}
+        #input{width: 100%;}
+        #task3,#task2,#task1{display: block;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#draggable").draggable();
+            $("#droppable").droppable({
+                drop: function (event, ui) {
+                    $("#draggable").addClass("d-none");
+                }
+            });
+        });
+//         $.ajax({
+//             type: "GET",
+//             url: "https://dummyjson.com/products",
+//             data: {},
+//             dataType: "json",
+//             success: function (response) {
+//                 var products = response.products;
+//                 // console.log(products[0]);
+//                 for (var i in products) {
+//                     // console.log(products[i]);
+//                     $('#task1').append(`<div><img src=${products[i].thumbnail} alt=""><figcaption><p>${products[i].description}</div>
+// `);
+//                 }
+              
+//             }
+//         });
+$("#task3 #btn").on("click",function () {
+    // alert("kkkk");
+    // console.log($("input"));
+        $.ajax({
+            type: "GET",
+            url: `https://dummyjson.com/products/${$("input").val}`,
+            data: {},
+            dataType: "json",
+            success: function (response) {
+                $("#task3").append(`<div><img src=${response.thumbnail} alt=""></div><div><p>${response.id}</p>
+    <p>title:${response.title}</p>
+    <p>category:${response.category}</p>
+    <p>description:${response.description}</p>
+    <p>price:${response.price}</p>
+    <p>discountPercentage:${response.discountPercentage}</p>
+    <p>$brand:{response.brand}</p>
+    <p>stock"${response.stock}</p>
+    <p>rating:${response.rating}</p>
+`)
+                // var products = response.products;
+                console.log($("input").val);
+               
+               }
+            }
+        );
+})
+    
+    </script>
+</head>
+
+<body>
+    <section id="task1">
+
+    </section>
+ <hr/>
+    <section id="task2">
+       
+        <div id="droppable" class="ui-widget-header">
+            <img src="./images/Gnome-user-trash.svg.png" alt="">
+        </div>
+        <div id="draggable" class="ui-widget-content">
+            <img src="./images/94-941217_trash-paper-icon-green-paper-cartoon-recycle-can.png" alt="">
+        </div>
+    </section> 
+    <section id="task3"> 
+    <div id ="input">    <input type="number">
+        <button id="btn">git product</button>    </div>
+</section>
+
+</body>
+
+</html>

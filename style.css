@@ -1,0 +1,52 @@
+img {
+    width: 100%;
+    margin: auto;
+}
+
+figure {
+    width: 30%;
+    display: inline-block;
+    margin: 0;
+
+}
+
+#blackHole {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+figure#trash,
+figure#trushfull {
+    background-color: aqua;
+}
+
+figure#trash {
+    display: block;
+}
+
+figure#trushfull {
+    display: none;
+}
+
+#blackHole {
+    width: 70%;
+    margin: auto;
+}
+
+#draggable {
+    width: 100px;
+    height: 100px;
+    padding: 0.5em;
+    float: left;
+    margin: 10px 10px 10px 0;
+}
+
+#droppable {
+    width: 150px;
+    height: 150px;
+    padding: 0.5em;
+    float: left;
+    margin: 10px;
+}
